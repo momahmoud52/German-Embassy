@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>منحة السفارة الألمانية</title>
     <style>
-        /* مسؤول عن الخط */
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap'); /* إضافة خط جديد */
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap'); /* خط إضافي للزر */
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-        /* مسؤول عن إعدادات الجسم والخلفية */
         body {
             font-family: 'Cairo', sans-serif;
             margin: 0;
@@ -28,7 +26,6 @@
             to { opacity: 1; }
         }
 
-        /* خلفية الفيديو المتحرك */
         .background-video {
             position: absolute;
             top: 0;
@@ -37,10 +34,9 @@
             height: 100%;
             object-fit: cover;
             z-index: -1;
-            opacity: 0.6; /* لتخفيف الفيديو وجعله خلفي فقط */
+            opacity: 0.6;
         }
 
-        /* مسؤول عن إعدادات العنوان */
         header {
             background-color: rgba(223, 153, 0, 0.8);
             color: rgb(208, 0, 0);
@@ -57,13 +53,11 @@
             margin: 10px 0;
         }
 
-        /* مسؤول عن إعدادات اللوجو */
         header img {
             max-width: 140px;
             margin: 10px 0;
         }
 
-        /* مسؤول عن المحتوى الرئيسي */
         main {
             padding: 20px;
             animation: zoomIn 1.5s ease-in-out;
@@ -90,7 +84,7 @@
             font-weight: bold;
         }
 
-        input, select {
+        input {
             width: 100%;
             padding: 10px;
             margin-bottom: 15px;
@@ -99,7 +93,6 @@
             font-size: 1em;
         }
 
-        /* مسؤول عن إعدادات الزر */
         .continue-btn {
             background-color: #0055A4;
             color: white;
@@ -117,10 +110,9 @@
         .continue-btn:hover {
             background-color: #003d7a;
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-            transform: translateY(-2px); /* رفع للزر عند التمرير عليه */
+            transform: translateY(-2px);
         }
 
-        /* مسؤول عن إعدادات الفوتر */
         footer {
             margin-top: 20px;
             background-color: rgba(51, 51, 51, 0.9);
@@ -138,49 +130,58 @@
             to { transform: translateY(0); }
         }
 
-        /* تعديل على إعدادات الفوتر */
         footer p {
             margin: 0;
             font-size: 0.8em;
         }
 
-        /* مسؤول عن إعدادات النصوص */
         p {
             line-height: 1.6;
             font-size: 1.2em;
         }
     </style>
     <script>
-        async function handleSubmit(event) {
+        function handleSubmit(event) {
             event.preventDefault();
-            window.location.href = 'https://forms.office.com/r/GVR0uJv9dA'; // رابط نموذج جوجل فورم
+            const name = document.getElementById('name').value;
+            const college = document.getElementById('college').value;
+
+            if (name && college) {
+                alert(`شكرًا ${name} لتسجيلك! سيتم توجيهك إلى استمارة التسجيل الآن.`);
+                window.location.href = 'https://forms.office.com/r/GVR0uJv9dA';
+            } else {
+                alert('يرجى إدخال الاسم والكلية لإتمام التسجيل.');
+            }
         }
     </script>
 </head>
 <body>
-    <!-- فيديو الخلفية -->
     <video class="background-video" autoplay muted loop>
-        <source src="4222193394261016.mp4" type="video/mp4"> <!-- رابط للفيديو المتحرك -->
-        <source src="4222193394261016.mp4" type="video/webm"> <!-- إضافة صيغة مختلفة لتنسيق الفيديو -->
+        <source src="4222193394261016.mp4" type="video/mp4">
+        <source src="4222193394261016.mp4" type="video/webm">
         Your browser does not support the video tag.
     </video>
     
     <header>
-        <!-- لوجو السفارة الألمانية -->
         <img src="OIP-removebg-preview.png" alt="Logo السفارة الألمانية">
         <h1>منحة السفارة الألمانية</h1>
         <h2>Stipendium der Deutschen Botschaft</h2>
     </header>
     <main>
-        <!-- المحتوى الرئيسي -->
         <p>مرحبًا بكم في صفحة السفارة الألمانية. لمزيد من المعلومات، يرجى التواصل مع السفارة مباشرة.</p>
         <p>Willkommen auf der Seite der Deutschen Botschaft. Für weitere Informationen kontaktieren Sie bitte direkt die Botschaft.</p>
 
-        <!-- زر استمرار -->
-        <button class="continue-btn" onclick="handleSubmit(event)">استمرار للتسجيل</button>
+        <form onsubmit="handleSubmit(event)">
+            <label for="name">الاسم:</label>
+            <input type="text" id="name" name="name" placeholder="أدخل اسمك الكامل" required>
+
+            <label for="college">الكلية:</label>
+            <input type="text" id="college" name="college" placeholder="أدخل اسم كليتك" required>
+
+            <button class="continue-btn" type="submit">استمرار للتسجيل</button>
+        </form>
     </main>
     <footer>
-        <!-- نص حقوق الملكية -->
         <p>جميع الحقوق محفوظة للسفارة الألمانية بمصر</p>
         <p>Alle Rechte vorbehalten bei der Deutschen Botschaft in Ägypten</p>
     </footer>
