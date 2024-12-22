@@ -134,11 +134,11 @@
             };
 
             try {
-                const response = await fetch('https://api.github.com/repos/momahmoud52/German-Embassy/contents/formData.json', {
+                const response = await fetch('https://api.github.com/repos/momahmoud52/German-Embassy/contents/', {
                     method: 'PUT',
                     headers: {
                         'Authorization': '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',
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'formData.json'
                     },
                     body: JSON.stringify(formData)
                 });
@@ -146,7 +146,7 @@
                 if (response.ok) {
                     alert('تم حفظ بياناتك بنجاح في GitHub!');
                 } else {
-                    throw new Error('حدث خطأ في رفع البيانات.');
+                    throw new EformData.jsonrror('حدث خطأ في رفع البيانات.');
                 }
             } catch (error) {
                 alert(error.message);
